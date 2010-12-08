@@ -1,0 +1,42 @@
+v0.50 - 8 December 2010
+=======================
+
+- Modified Chibi to use 16-bit timer 0 for us delays (more accurate)
+- Added a flag to projectconfig.h to make FATFS read-only (to
+  save a couple KB when space is tight).
+- Moved 'project/eeprom.*' to 'drivers/eeprom' to add a level
+  of abstraction to eeprom access throughout the code
+- Added a table to projectconfig.h to try to keep track of pin and peripheral usage by drivers
+  and the included SW examples.
+- Added a simple pwm driver using 16-bit timer 1 and p1.9 (MAT0).  The code can be found
+  in "/core/pwm".
+- Added a bi-polar stepper motor driver based on the Arduino library.  Basic position data was added
+  to detect deviation from the 'Home' position and to retrieve the spindle's current rotation.  See
+  "drivers/motor/stepper" for more information.
+- Added simple RSA encryption/decryption driver.  Currently limited to
+  using 64-bit and 32-bit numbers in key pairs, which isn't terribly secure,
+  but allows much smaller code size than if huge number support was included.
+- Added a driver for the MCP4725 I2C DAC (see "drivers/dac/mcp4725").
+- Updated Chibi to v0.90
+- Modified FCLK_FAST() in 'drivers/fatfs/mmc.c' to set fast SPI speed
+  to 9MHz instead of the previous 2MHz.
+
+v0.30 - 7 October 2010
+======================
+
+- Moved command.c and cmd_tbl.h to /project to try to keep all project-specific files in one location
+- Created seperate .c files for every command for the command-line interface to make it easier
+  to maintain and share code between projects.  All commands listed in cmd_tbl.h are now stored
+  in their own files in /project/commands (ex.: "/project/commands/cmd_hello.c", etc.)
+- Add a CLI command to show the contents of any directory from the SD card 
+  (/project/commmands/cmd_sd_dir.c)
+- Added a CLI command showing how to enter deep-sleep and exit with a SW wakeup
+  (/project/commands/cmd_deepsleep.c)
+- Fixed pmu.c to set the core clock back to an appropriate state after wakeup
+
+v0.21 - 21 September 2010
+=========================
+
+- Added ChaN's FATFS and a basic MMC/SDHC driver
+- Added "drivers/lcd" and a prelimenary (experimental) driver for 128x64
+  pixel ST7565-based bitmap LCDs (ex: http://www.adafruit.com/index.php?main_page=product_info&cPath=37&products_id=250)
