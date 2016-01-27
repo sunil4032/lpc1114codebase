@@ -1,0 +1,3 @@
+An open source software library for NXP's Cortex-M0 based LPC1100 microcontroller family. Developped with GCC, the package includes complete startup code, a standard make file, and project files for CodeLite? C/C++ IDE and Rowley Associate's (commercial) GCC-based Crossworks for ARM.
+
+This software was originally intended to be used with the [LPC1114 Reference Design](http://www.microbuilder.eu/Projects/LPC1114ReferenceDesign.aspx), but it can easily be adapted to almost any LPC1000 microcontroller, and has been successfully adapted to a number of LPC1100, LPC1300 and LPC1700 chips.
